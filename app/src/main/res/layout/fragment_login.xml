@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="com.example.samplemvvmkotlin.loginmodule.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vertical_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_vertical_end"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toEndOf="@+id/guide_vertical_end"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/theme_switch"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/hint_login_email"
+            app:layout_constraintEnd_toEndOf="@+id/guide_vertical_end"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/imgLogo">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:text="@={loginViewModel.userEmail}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/hint_login_password"
+            app:layout_constraintEnd_toEndOf="@+id/guide_vertical_end"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/inputEmail">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:text="@={loginViewModel.userPwd}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="224dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/login_background"
+            android:enabled="@{loginViewModel.isValid}"
+            android:text="@string/text_login"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/guide_vertical_end"
+            app:layout_constraintStart_toStartOf="@+id/guide_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/inputPwd" />
+
+        <ProgressBar
+            android:id="@+id/progress_login"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+            app:layout_constraintTop_toBottomOf="@+id/inputPwd" />
+
+        <Switch
+            android:id="@+id/theme_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:showText="true"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textOff="@string/theme_light"
+            android:textOn="@string/theme_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

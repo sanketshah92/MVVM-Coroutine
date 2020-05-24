@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SampleMvvmKotlin</string>
+    <string name="hint_login_email">E-mail</string>
+    <string name="hint_login_password">Password</string>
+    <string name="text_login">Login</string>
+    <string name="switch_theme">Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+</resources>
